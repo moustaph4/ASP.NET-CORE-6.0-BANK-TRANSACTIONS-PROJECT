@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BankaIslemleriProjesi.Models.Islem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>İŞLEMLER</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HesapNumarasi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MusteriAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BankaAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SWIFTCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tarih)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tutar)
+            </th>
+            <th>
+                <a asp-action="EkleYadaDuzenle" class="btn btn-sm btn-success"> 
+                    <i class="fa-solid fa-plus"></i> Yeni İşlem</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HesapNumarasi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MusteriAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankaAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SWIFTCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tarih)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tutar)
+            </td>
+            <td>
+                <form>
+                        <div class="btn group btn-group-sm">
+                            <a asp-action="EkleYadaDuzenle" asp-route-id="@item.IslemId" class="btn btn-warning">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <form asp-action="Delete" asp-route-id="@item.IslemId">
+                                <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Silmek istediğinize emin misiniz?')">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </div>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

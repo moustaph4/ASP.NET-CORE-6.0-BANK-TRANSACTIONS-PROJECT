@@ -1,0 +1,71 @@
+﻿@model BankaIslemleriProjesi.Models.Islem
+
+@{
+    ViewData["Title"] = "Islem";
+}
+
+
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>İŞLEM</h1>
+        <form asp-action="EkleYadaDuzenle" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IslemId" />
+            <input type="hidden" asp-for="Tarih"/>
+            <div class="form-group">
+                <label asp-for="HesapNumarasi" class="control-label">Hesap Numarası</label>
+                <input asp-for="HesapNumarasi" class="form-control" />
+                <span asp-validation-for="HesapNumarasi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MusteriAdi" class="control-label">Müşteri Adı </label>
+                <input asp-for="MusteriAdi" class="form-control" />
+                <span asp-validation-for="MusteriAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BankaAdi" class="control-label">Banka Adı</label>
+                <input asp-for="BankaAdi" class="form-control" />
+                <span asp-validation-for="BankaAdi" class="text-danger"></span>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="SWIFTCode" class="control-label">SWIFTCode</label>
+                        <input asp-for="SWIFTCode" class="form-control" />
+                        <span asp-validation-for="SWIFTCode" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Tutar" class="control-label">Tutar</label>
+                        <input asp-for="Tutar" class="form-control" />
+                        <span asp-validation-for="Tutar" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Oluştur" class="btn btn-primary w-100" />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <a asp-action="Index" class="btn btn-info w-100">İşlemleri Görüntüle</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
